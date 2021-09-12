@@ -1,9 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
-
-
 #import libraries
 import numpy as np
 import random
@@ -167,10 +161,6 @@ print('Agent start location = ', agentLocation)
 
 
 #______________________________________________________________________________________________________
-
-
-# In[ ]:
-
 
 
 
