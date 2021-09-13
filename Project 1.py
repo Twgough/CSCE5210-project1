@@ -1,12 +1,10 @@
 #import libraries
 import numpy as np
 import random
+line_sep = '\n~~~~~~~~~~~~~~~~~~\n'
 #______________________________________________________________________________________________________
 
 #Define the environment
-line_sep = '\n~~~~~~~~~~~~~~~~~~\n'
-print (line_sep)
-
 environment_rows = 6
 environment_columns = 6
 
@@ -16,23 +14,9 @@ def print_grid():
         print(str(y) + " " + " ".join(grid[y]))
 
 #______________________________________________________________________________________________________
-
 #Define rewards
 
 rewards = np.full((environment_rows, environment_columns), -1)
-
-#Define location of agent and shelves with items
-agentLocation = rewards[0,0] = 0
-item_A = rewards[1,1] = 3
-item_B = rewards[2,2] = 3
-item_C = rewards[3,1] = 3
-item_D = rewards[0,2] = 3
-item_E = rewards[2,0] = 3
-item_F = rewards[4,2] = 3
-item_G = rewards[1,4] = 3
-item_H = rewards[4,5] = 3
-item_I = rewards[2,4] = 3
-item_J = rewards[5,3] = 3
 
 #Give items their single character name
 item_A = 'A'
@@ -46,6 +30,89 @@ item_H = 'H'
 item_I = 'I'
 item_J = 'J'
 
+#______________________________________________________________________________________________________
+#Generate random orders containing items A-J
+
+x = random.randint(1,10)
+
+items = [item_A,item_B, item_C, item_D, item_E, item_F, item_G, item_H, item_I, item_J]
+ordered_items = random.sample(items,x)
+print(line_sep)
+
+print('Items ordered:',ordered_items)
+
+print (line_sep)
+
+#Define location of agent and shelves with items location and rewards
+
+agentLocation = rewards[0,0] = 0
+
+item_A = 'A'
+if item_A in ordered_items:
+            rewards [1,1] = 3
+else:
+    rewards[1,1] = -1
+
+item_B = 'B'
+if item_B in ordered_items:
+            rewards [2,2] = 3
+else:
+    rewards[2,2] = -1
+
+item_C = 'C'
+if item_C in ordered_items:
+            rewards [3,1] = 3
+else:
+    rewards[3,1] = -1
+
+
+item_D = 'D'
+if item_D in ordered_items:
+            rewards [0,2] = 3
+else:
+    rewards[0,2] = -1
+
+
+item_E = 'E'
+if item_E in ordered_items:
+            rewards [2,0] = 3
+else:
+    rewards[2,0] = -1
+
+
+item_F = 'F'
+if item_F in ordered_items:
+            rewards [4,2] = 3
+else:
+    rewards[4,2] = -1
+
+
+item_G = 'G'
+if item_G in ordered_items:
+            rewards [1,4] = 3
+else:
+    rewards[1,4] = -1
+
+
+item_H = 'H'
+if item_H in ordered_items:
+            rewards [4,5] = 3
+else:
+    rewards[4,5] = -1
+
+
+item_I = 'I'
+if item_I in ordered_items:
+            rewards [2,4] = 3
+else:
+    rewards[2,4] = -1
+
+
+item_J = 'J'
+if item_J in ordered_items:
+            rewards [5,3] = 3
+else:
+    rewards[5,3] = -1
 
 #Define empty shelves locations
 empty = {}
@@ -60,16 +127,6 @@ empty[5] = [0,1,2,4,5]
 for row in rewards:
     print(row)
 
-#______________________________________________________________________________________________________
-#Generate random orders containing items A-J
-
-x = random.randint(1,10)
-
-items = [item_A,item_B, item_C, item_D, item_E, item_F, item_G, item_H, item_I, item_J]
-order = random.sample(items,x)
-print(line_sep)
-
-print('Items ordered:',order)
 #______________________________________________________________________________________________________
 
 
@@ -161,6 +218,4 @@ print('Agent start location = ', agentLocation)
 
 
 #______________________________________________________________________________________________________
-
-
 
